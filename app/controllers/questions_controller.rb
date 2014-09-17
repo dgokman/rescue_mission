@@ -6,24 +6,26 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
 
+    @question = Question.find(params[:id])
+    @answer = Answer.new
   end
 
-
   def new
-    @questions = Question.new
+    @question = Question.new
   end
 
 
   def create
-    @questions = Question.create(params.require(:question).permit(:question, :description))
-    if @questions.errors.any?
+    @question = Question.create(params.require(:question).permit(:question, :description))
+    if @question.errors.any?
       render "new"
     else
-      @questions.save
+      @question.save
       redirect_to "/questions"
     end
+
   end
+
 
 end

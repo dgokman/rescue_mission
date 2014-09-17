@@ -1,10 +1,10 @@
 <%= form_for :question, url: {action: 'create'} do |f| %>
-  <% if @questions.errors.any? %>
+  <% if @question.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@questions.errors.count, "error") %> prohibited
+    <h2><%= pluralize(@question.errors.count, "error") %> prohibited
       this article from being saved:</h2>
     <ul>
-    <% @questions.errors.full_messages.each do |msg| %>
+    <% @question.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
@@ -12,12 +12,12 @@
   <% end %>
   <p>
     <%= f.label :question %><br>
-    <%= f.text_field :question %>
+    <%= f.text_field :question, size: "40x1" %>
   </p>
 
   <p>
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, size: "40x20" %>
   </p>
 
   <p>
