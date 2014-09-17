@@ -1,0 +1,5 @@
+<%= form_for @questions, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  Question: <%= f.text_field :question, size: "25X1" %><br>
+  Description: <%= f.text_area :description, size: "20x5" %><br>
+  <%= f.submit "Submit Question" %>
+<% end %>
