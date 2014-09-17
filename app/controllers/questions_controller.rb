@@ -1,7 +1,8 @@
 require 'pry'
 class QuestionsController < ApplicationController
-  attr_reader :questions
+
   def index
+    @questions_time = Question.order(created_at: :desc)
   end
 
   def new

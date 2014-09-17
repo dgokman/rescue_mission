@@ -1,3 +1,7 @@
 <h1>Questions</h1>
 
 <a href="/questions/new">Submit a question!</a>
+
+<% @questions_time.each do |question| %>
+<li><%= question.question %> <%= question.created_at %></li>
+<% end %>
