@@ -2,7 +2,6 @@ require 'pry'
 class QuestionsController < ApplicationController
 
   def index
-    @questions_time = Question.order(created_at: :desc)
   end
 
   def new
@@ -11,7 +10,12 @@ class QuestionsController < ApplicationController
 
   def create
     @questions = Question.create(params.require(:question).permit(:question, :description))
-    render "new"
+    if @questions.errors.any?
+      render "new"
+    else
+      @questions.save
+      redirect_to "/questions"
+    end
   end
 
 end

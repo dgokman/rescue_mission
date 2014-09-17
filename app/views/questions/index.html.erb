@@ -2,6 +2,6 @@
 
 <a href="/questions/new">Submit a question!</a>
 
-<% @questions_time.each do |question| %>
+<% Question.order("created_at DESC").each do |question| %>
 <li><%= question.question %> <%= question.created_at %></li>
 <% end %>
