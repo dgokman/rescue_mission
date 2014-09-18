@@ -27,3 +27,11 @@
 <% end %>
 
 <%= link_to 'List of Questions', '/questions' %>
+<br>
+Answers:
+
+<% Answer.find_each do |answer| %>
+<% if answer.question_id == params[:id].to_i %>
+<li><%= answer.answer %></li>
+<% end %>
+<% end %>

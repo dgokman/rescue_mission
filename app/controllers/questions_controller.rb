@@ -6,9 +6,10 @@ class QuestionsController < ApplicationController
   end
 
   def show
-
+   #binding.pry
     @question = Question.find(params[:id])
     @answer = Answer.new
+
   end
 
   def new
@@ -17,7 +18,7 @@ class QuestionsController < ApplicationController
 
 
   def create
-    @question = Question.create(params.require(:question).permit(:question, :description))
+    @question = Question.create(question_params)
     if @question.errors.any?
       render "new"
     else
@@ -25,6 +26,27 @@ class QuestionsController < ApplicationController
       redirect_to "/questions"
     end
 
+  end
+
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+
+    @question = Question.find(params[:id])
+
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:question, :description)
   end
 
 

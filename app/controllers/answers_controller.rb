@@ -11,7 +11,7 @@ class AnswersController < ApplicationController
         redirect_to '/'
       else
         @answers = @question.answers
-        render 'questions/show'
+        render '/questions/show'
       end
 
   end
