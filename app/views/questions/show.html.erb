@@ -35,3 +35,5 @@ Answers:
 <li><%= answer.answer %></li>
 <% end %>
 <% end %>
+
+<%= form_for :question, :method => :delete do  %> <%= submit_tag "Destroy" %> <% end %>

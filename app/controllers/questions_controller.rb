@@ -43,6 +43,14 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    @question_all = Question.all
+    @question_all.delete_all(id: params[:id])
+
+    redirect_to '/questions'
+  end
+
+
   private
 
   def question_params

@@ -3,5 +3,5 @@
 <a href="/questions/new">Submit a question!</a>
 
 <% Question.order("created_at DESC").each do |question| %>
-<li><a href="/questions/<%= question.id %>"><%= question.question %></a> Created at: <%= question.created_at %> <a href="/questions/<%= question.id %>/edit">edit</a></li>
+<li><a href="/questions/<%= question.id %>"><%= question.question %></a> Created at: <%= question.created_at %> <a href="/questions/<%= question.id %>/edit">edit</a> <%= link_to 'destroy', question_path(question), method: :delete %></li>
 <% end %>
