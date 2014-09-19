@@ -30,10 +30,11 @@
 <br>
 Answers:
 
-<% Answer.find_each do |answer| %>
+<% Answer.order("created_at DESC").find_each do |answer| %>
 <% if answer.question_id == params[:id].to_i %>
 <li><%= answer.answer %></li>
 <% end %>
 <% end %>
 
 <%= form_for :question, :method => :delete do  %> <%= submit_tag "Destroy" %> <% end %>
+<a href="/questions/<%= params[:id] %>/edit">EDIT</a>
